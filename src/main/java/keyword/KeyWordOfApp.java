@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * keyword类，用于操作APP的关键字
  *
- * @author wong
+ * @author wangwei
  * @date 2019-10-13
  */
 public class KeyWordOfApp {
@@ -123,9 +123,9 @@ public class KeyWordOfApp {
     public void closeAppium() {
         try {
             runCmd("taskkill /F /IM node.exe");
-            wait(5);
+            this.threadWait("5");
             AutoLogger.log.info("Appium服务已关闭");
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             AutoLogger.log.info("Appium服务关闭异常，请检查");
             AutoLogger.log.error(e, e.fillInStackTrace());
         }
@@ -157,6 +157,7 @@ public class KeyWordOfApp {
     public void closeApp() {
         try {
             driver.close();
+            this.threadWait("1");
             AutoLogger.log.info("APP已关闭");
         } catch (Exception e) {
             AutoLogger.log.info("APP关闭异常，请检查");
@@ -233,5 +234,83 @@ public class KeyWordOfApp {
             AutoLogger.log.error(e, e.fillInStackTrace());
         }
     }
-    public void adbSwiep(){}
+
+    /**
+     * 使用adb方式滑动屏幕，设定起点、终点坐标
+     *
+     * @param startX 起点x轴坐标
+     * @param startY 起点y轴坐标
+     * @param endX   终点x轴坐标
+     * @param endY   终点y轴坐标
+     */
+    public void adbSwiep(String startX, String startY, String endX, String endY) {
+        int x = Integer.parseInt(startX);
+        int y = Integer.parseInt(startY);
+        int x1 = Integer.parseInt(endX);
+        int y1 = Integer.parseInt(endY);
+        try {
+            this.runCmd("adb shell input swipe " + x + " " + y + " " + x1 + " " + y1);
+            this.threadWait("2");
+            AutoLogger.log.info("滑动屏幕完成");
+        } catch (Exception e) {
+            AutoLogger.log.info("滑动屏幕异常，请检查");
+            AutoLogger.log.info(e, e.fillInStackTrace());
+        }
+    }
+
+    /**
+     * adb方式点击坐标
+     *
+     * @param xAxis x轴坐标
+     * @param yAxis y轴坐标
+     */
+    public void adbTap(String xAxis, String yAxis) {
+        int x = Integer.parseInt(xAxis);
+        int y = Integer.parseInt(yAxis);
+        try {
+            this.runCmd("adb shell input tap " + x + "" + y);
+            this.threadWait("1.5");
+            AutoLogger.log.info("坐标点击成功");
+        } catch (Exception e) {
+            AutoLogger.log.info("坐标点击异常，请检查");
+            AutoLogger.log.info(e, e.fillInStackTrace());
+        }
+    }
+
+    /**
+     * adb模拟键盘按键事件
+     *
+     * @param keycode 键盘编码，百度可获得https://www.cnblogs.com/lxwphp/p/9548823.html
+     */
+    public void adbkeycode(String keycode) {
+        int key = Integer.parseInt(keycode);
+        try {
+            this.runCmd("adb shell input keyevent " + key);
+            this.threadWait("1.5");
+            AutoLogger.log.info("模拟按键时间完成");
+        } catch (Exception e) {
+            AutoLogger.log.info("模拟按键时间异常，请检查");
+            AutoLogger.log.info(e, e.fillInStackTrace());
+        }
+    }
+
+    /**
+     * 判断元素是否存在
+     *
+     * @param xpath 元素表达式
+     * @param text  断言内容
+     */
+    public void assertSame(String xpath, String text) {
+        try {
+            String result = driver.findElement(By.xpath(xpath)).getText();
+            if (result.equals(text)) {
+                AutoLogger.log.info("测试成功");
+            } else {
+                AutoLogger.log.info("测试失败");
+            }
+        } catch (Exception e) {
+            AutoLogger.log.info("执行断言异常，请检查");
+            AutoLogger.log.info(e, e.fillInStackTrace());
+        }
+    }
 }
