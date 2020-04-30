@@ -192,8 +192,8 @@ public class KeyWordOfWeb {
     public void click(String xpath) {
         try {
             explicitlyWait(xpath);
+            text = this.getText(xpath);
             WebElement element = driver.findElement(By.xpath(xpath));
-            text = element.getText();
             element.click();
             AutoLogger.log.info("点击成功-" + text);
         } catch (Exception e) {
@@ -277,8 +277,8 @@ public class KeyWordOfWeb {
     public void hover(String xpath) {
         try {
             explicitlyWait(xpath);
+            String text = this.getText(xpath);
             WebElement actionElement = driver.findElement(By.xpath(xpath));
-            String text = actionElement.getText();
             Actions action = new Actions(driver);
             action.moveToElement(actionElement).click().perform();
             AutoLogger.log.info("鼠标悬停到-" + text);
@@ -295,7 +295,7 @@ public class KeyWordOfWeb {
      * @param xpath 元素表达式
      * @return 返回文本
      */
-    public String getText(String xpath) {
+    private String getText(String xpath) {
         String elementText;
         WebElement element = driver.findElement(By.xpath(xpath));
         elementText = element.getText();
