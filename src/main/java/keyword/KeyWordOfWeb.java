@@ -12,6 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author wong
+ * @date 2020-04-30
+ */
 public class KeyWordOfWeb {
     /**
      * 公共driver，用于后续操作浏览器
@@ -330,7 +334,7 @@ public class KeyWordOfWeb {
      *
      * @param jsCommond js语句
      */
-    public void runJS(String jsCommond) {
+    public void runJs(String jsCommond) {
         try {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript(jsCommond);
