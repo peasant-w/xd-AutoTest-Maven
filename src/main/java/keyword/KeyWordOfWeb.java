@@ -34,14 +34,17 @@ public class KeyWordOfWeb {
                 case "chrome":
                     GoogleDriver google = new GoogleDriver("Tools/chromedriver.exe");
                     driver = google.getDriver();
+                    implicitlyWait("3");
                     AutoLogger.log.info("谷歌浏览器启动成功");
                     break;
                 case "firefox":
                     FireFoxDriver fox = new FireFoxDriver("C:\\Program Files\\Mozilla Firefox\\firefox.exe", "Tools/geckodriver.exe");
                     driver = fox.getDriver();
+                    implicitlyWait("3");
                     AutoLogger.log.info("火狐浏览器启动成功");
                     break;
                 case "ie":
+                    implicitlyWait("3");
                     AutoLogger.log.info("暂不支持该浏览器");
                     break;
                 default:
