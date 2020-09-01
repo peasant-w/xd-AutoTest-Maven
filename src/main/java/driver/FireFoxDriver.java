@@ -24,12 +24,15 @@ public class FireFoxDriver {
         // 创建一个 Firefox的浏览器实例
         try {
             driver = new FirefoxDriver(firefoxOptions);
-            AutoLogger.log.info("启动火狐浏览器");
+            //浏览器窗口最大化
+            driver.manage().window().maximize();
+            //默认打开空白页
+            driver.get("about:blank");
+            AutoLogger.log.info("启动Firefox浏览器");
         } catch (Exception e) {
-            AutoLogger.log.info("创建driver失败，请检查配置");
+            AutoLogger.log.info("启动Firefox浏览器失败，请检查配置");
             AutoLogger.log.error(e, e.fillInStackTrace());
         }
-
     }
 
     /**
@@ -38,7 +41,7 @@ public class FireFoxDriver {
      * @return
      */
     public WebDriver getDriver() {
-        return  this.driver;
+        return this.driver;
     }
 }
 

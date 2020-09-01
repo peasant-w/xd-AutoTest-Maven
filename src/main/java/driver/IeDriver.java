@@ -43,12 +43,14 @@ public class IeDriver { // IE浏览器驱动类
         try {
             // 基于options选项与driver服务 创建一个 IE 的浏览器webDriver实例，完成浏览器启动。
             this.driver = new InternetExplorerDriver(service, ieOptions);
-            // 让浏览器访问空白页面
+            //浏览器窗口最大化
+            driver.manage().window().maximize();
+            // 默认打开空白页面
             driver.get("about:blank");
             AutoLogger.log.info("启动IE浏览器");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("启动IE失败，检查配置");
+            System.out.println("启动IE浏览器失败，检查配置");
         }
     }
 

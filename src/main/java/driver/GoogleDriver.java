@@ -32,11 +32,14 @@ public class GoogleDriver {
         //最大化浏览器窗口
         option.addArguments("--start-maximized");
         try { // 创建一个 Chrome 的浏览器实例
-            this.driver = new ChromeDriver(option);
-            // 打开空白页
+            driver = new ChromeDriver(option);
+            //浏览器窗口最大化
+            driver.manage().window().maximize();
+            // 默认打开打开空白页
             driver.get("about:blank");
+            AutoLogger.log.info("启动chrome浏览器");
         } catch (Exception e) {
-            AutoLogger.log.info("driver创建失败！请检查配置！");
+            AutoLogger.log.info("启动chrome浏览器失败，请检查配置！");
             e.printStackTrace();
         }
 

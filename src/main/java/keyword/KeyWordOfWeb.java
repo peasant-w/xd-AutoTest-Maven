@@ -43,7 +43,7 @@ public class KeyWordOfWeb {
                     implicitlyWait("3");
                     break;
                 case "ie":
-                    IeDriver ie =  new IeDriver("Tools/IEDriver.exe");
+                    IeDriver ie = new IeDriver("Tools/IEDriver.exe");
                     driver = ie.getdriver();
                     implicitlyWait("3");
                     break;
@@ -86,18 +86,6 @@ public class KeyWordOfWeb {
         }
     }
 
-    /**
-     * 浏览器窗口最大化
-     */
-    public void maxWindow() {
-        try {
-            driver.manage().window().maximize();
-            AutoLogger.log.info("窗口最大化成功");
-        } catch (Exception e) {
-            AutoLogger.log.info("窗口最大化失败");
-            e.printStackTrace();
-        }
-    }
 
     /**
      * 自定义浏览器窗口位置大小
