@@ -3,6 +3,7 @@ package keyword;
 import driver.AutoLogger;
 import driver.FireFoxDriver;
 import driver.GoogleDriver;
+import driver.IeDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -35,17 +36,16 @@ public class KeyWordOfWeb {
                     GoogleDriver google = new GoogleDriver("Tools/chromedriver.exe");
                     driver = google.getDriver();
                     implicitlyWait("3");
-                    AutoLogger.log.info("谷歌浏览器启动成功");
                     break;
                 case "firefox":
                     FireFoxDriver fox = new FireFoxDriver("C:\\Program Files\\Mozilla Firefox\\firefox.exe", "Tools/geckodriver.exe");
                     driver = fox.getDriver();
                     implicitlyWait("3");
-                    AutoLogger.log.info("火狐浏览器启动成功");
                     break;
                 case "ie":
+                    IeDriver ie =  new IeDriver("Tools/IEDriver.exe");
+                    driver = ie.getdriver();
                     implicitlyWait("3");
-                    AutoLogger.log.info("暂不支持该浏览器");
                     break;
                 default:
                     AutoLogger.log.info("未能找到可用浏览器");
