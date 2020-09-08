@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.testing</groupId>
-    <artifactId>VIP07FirstMaven</artifactId>
+    <artifactId>xd-AutoTest-Maven</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -87,6 +87,12 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.3.0</version>
         </dependency>
 
     </dependencies>

@@ -23,7 +23,7 @@ public class AppDriver {
         cap.setCapability("deviceName",deviceName);
         cap.setCapability("platformName",platformName);
         cap.setCapability("platformVersion",platformVersion);
-        cap.setCapability("appPavkage",appPackage);
+        cap.setCapability("appPackage",appPackage);
         cap.setCapability("appActivity", appActivity);
         cap.setCapability("noSign", "true");
         cap.setCapability("noReset", "true");
