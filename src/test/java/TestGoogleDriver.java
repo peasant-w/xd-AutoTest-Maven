@@ -1,21 +1,135 @@
-import driver.AutoLogger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import driver.GoogleDriver;
-
-public class TestGoogleDriver {
-    public static void main(String[] args){
-        GoogleDriver googledriver = new GoogleDriver("Tools/chromedriver.exe");
-        WebDriver driver = googledriver.getDriver();
-        AutoLogger.log.info("==========测试开始==========");
-        driver.get("http://172.16.8.38:8080/");
-        driver.findElement(By.xpath("//input[@name='username']")).clear();
-        driver.findElement(By.xpath("//input[@name='username']")).sendKeys("admin");
-        driver.findElement(By.xpath("//input[@name='password']")).clear();
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("111111");
-        driver.findElement(By.xpath("/html/body/div/div/form/button")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/a")).click();
-        driver.close();
-        AutoLogger.log.info("==========测试结束==========");
-    }
-}
+//import driver.AutoLogger;
+//import keyword.KeyWordOfWeb;
+//import org.openqa.selenium.By;
+//import org.openqa.selenium.WebDriver;
+//import driver.GoogleDriver;
+//
+//public class TestGoogleDriver {
+//    public static void main(String[] args) {
+//        AutoLogger.log.info("==========测试开始==========");
+//        KeyWordOfWeb xd = new KeyWordOfWeb();
+//        //打开浏览器
+//        xd.openBrowser("chrome");
+//        //访问小贷测试地址
+//        xd.visitUrl("https://dev-xd.hfmoney.com/");
+//        //用户登录
+//        xd.input("//input[@name='username']", "admin");
+//        xd.input("//input[@name='password']", "1");
+//        xd.click("//input[@value='登录']");
+//        xd.alertAccept();
+//        //等待10秒
+//        xd.halt("10");
+//        //进入首页
+//        AutoLogger.log.info("进入首页");
+//        //鼠标点击个人办公
+//        xd.click("//a[@id='34']");
+//        //等待20秒
+////        xd.halt("10");
+////        xd.hover("//a[text()='申贷意向']");
+//        //点击申贷意向
+//        xd.click("//a[text()='申贷意向']");
+//        //等待5秒
+//        xd.halt("2");
+//        //切换申贷意向iframe
+//        xd.intoIframe("//iframe[@name='10000091012354']");
+//        //点击添加
+//        xd.click("//a[text()='添加']");
+//        //退出至默认iframe
+//        xd.outIframe();
+//        //进入意向编辑页面
+//        xd.click("//a[text()='编辑申贷意向']");
+//        //切换到申贷意向编辑iframe子页面
+//        xd.intoIframe("//iframe[@id='bjlc0']");
+//        xd.intoIframe("//iframe[@id='iframepage']");
+//        //选择客户名称
+//        xd.click("//a[@id='chose_item']");
+//        xd.outIframe();
+//        xd.intoIframe("//iframe[@id='wintest1']");
+//        xd.intoIframe("//iframe[@id='dialogFrame']");
+//        xd.click("//td[text()='梦玲珑']");
+//        xd.outIframe();
+//        xd.intoIframe("//iframe[@id='wintest1']");
+//        xd.click("//span[text()='选择']");
+//        xd.outIframe();
+//        //选择共借人
+//        xd.intoIframe("//iframe[@id='bjlc0']");
+//        xd.intoIframe("//iframe[@id='iframepage']");
+//        xd.click("//input[@id='customerNames']/following-sibling::a[text()='选择']");
+//        xd.outIframe();
+//        xd.intoIframe("//iframe[@id='wintest1']");
+//        xd.intoIframe("//iframe[@id='dialogFrame']");
+////        xd.runJs("document.getElementsByClassName('sf_open')[0].click();");
+////        xd.input("//input[@id='Q_customerName_SL']","肖国钱");
+////        xd.runJs("document.getElementsByClassName('button')[0].click();");
+////        xd.click("//a/span[text()='查询']");
+////        xd.click("//tr[@class='even']/td[text()='肖国钱']");
+//        xd.halt("2");
+////        xd.click("//input[@value='李佳航']/preceding-sibling::input[contains(@value,'李佳航')]/parent::td");
+//        xd.click("//td[text()='李佳航']");
+//        xd.outIframe();
+//        xd.intoIframe("//iframe[@id='wintest1']");
+//        xd.click("//span[text()='选择']");
+//        xd.outIframe();
+//        //选择产品名称
+//        xd.intoIframe("//iframe[@id='bjlc0']");
+//        xd.intoIframe("//iframe[@id='iframepage']");
+//        xd.select("//select[@id='baseProductId']","10000030026530");
+//        //选择本次抵押情况
+//        xd.select("//select[@id='mortgageSituation']","2");
+//        //选择项目名称
+//        xd.input("//input[@id='itemApplyName']","万科兰乔圣菲");
+//        //选择合作方渠道
+//        xd.select("//select[@id='cooperantChannel']","1");
+//        //填写借款金额
+//        xd.input("//input[@id='itemApplyMoney']","100000");
+//        //填写借款期限
+//        xd.input("//input[@id='itemApplyExpires']","12");
+//        //选择还款方式
+//        xd.select("//select[@id='itemApplyRepayType']","003");
+//        //选择贷款性质
+//        xd.select("//select[@id='itemApplyNature']","1");
+//        //设置是否贴息
+//        xd.select("//select[@id='itemApplyIntersetType']","002");
+//        //填写物业地址
+//        xd.input("//input[@id='transactionAddress']","广东省广州市天河区珠江新城金穗路1号");
+//        //设置申请用途
+//        xd.select("//th[contains(text(),'申请用途')]/following-sibling::td/select[@id='appUse']","01");
+//        //填写申请地址
+//        xd.input("//input[@id='appArea']","广东省广州市天河区珠江新城金穗路1号");
+//        //设置还款来源
+//        xd.click("//input[@name='itemApplyRepaySource' and @value = '2']");
+//        //设置信贷经理B角
+//        xd.click("//input[@id='itemApplyBName']/following-sibling::a[text()='选择']");
+//        xd.outIframe();
+//        xd.intoIframe("//iframe[@id='wintest1']");
+//        xd.halt("2");
+//        xd.intoIframe("//iframe[@id='userListFrame']");
+//        xd.click("//td[text()='费凡']");
+//        xd.outIframe();
+//        xd.intoIframe("//iframe[@id='wintest1']");
+//        xd.click("//span[text()='选择']");
+//        xd.outIframe();
+//        //设置信贷经理C角
+//        xd.intoIframe("//iframe[@id='bjlc0']");
+//        xd.intoIframe("//iframe[@id='iframepage']");
+//        xd.click("//input[@id='itemApplyCName']/following-sibling::a[text()='选择']");
+//        xd.outIframe();
+//        xd.intoIframe("//iframe[@id='wintest1']");
+//        xd.intoIframe("//iframe[@id='userListFrame']");
+//        xd.click("//td[text()='吴凯琳']");
+//        xd.intoIframe("//iframe[@id='wintest1']");
+//        xd.click("//span[text()='选择']");
+//        xd.outIframe();
+//        //选择奖励方式
+//        xd.select("//span[@id='rewardMethod']/select[@id='appUse']","3");
+//        //设置推荐情况
+//        xd.select("//span[@id='reccompanyType']/select[@id='appUse']","5");
+//        //保存页面数据
+//        xd.click("//a[@id='dataFormSave']");
+//        //等待10秒
+//        xd.halt("10");
+//        //关闭浏览器
+//        xd.closeBrowser();
+//        AutoLogger.log.info("==========测试结束==========");
+//    }
+//}

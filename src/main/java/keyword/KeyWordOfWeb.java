@@ -34,6 +34,7 @@ public class KeyWordOfWeb {
     //结果
     public static final String PASS = "pass";
     public static final String FAIL = "fail";
+    //通用时间格式
     public static final String DATE_FORMAT = "yyyyMMddHHmmss";
 
     public KeyWordOfWeb(ExcelWriter result) {
