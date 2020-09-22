@@ -243,7 +243,7 @@ public class KeyWordOfWeb {
             AutoLogger.log.info(css + "输入值" + content);
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info(css + "输入值失败-" + content);
+            AutoLogger.log.error(css + "输入值失败-" + content);
             e.printStackTrace();
         }
     }
@@ -263,7 +263,7 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("点击-" + text);
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("点击失败-" + text);
+            AutoLogger.log.error("点击失败-" + text);
             AutoLogger.log.error(e, e.fillInStackTrace());
         }
     }
@@ -281,8 +281,8 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("点击" + css);
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("点击失败" + css);
-            AutoLogger.log.info(e, e.fillInStackTrace());
+            AutoLogger.log.error("点击失败" + css);
+            AutoLogger.log.error(e, e.fillInStackTrace());
         }
     }
 
@@ -301,7 +301,7 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("切换iframe页面成功");
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("切换iframe页面失败");
+            AutoLogger.log.error("切换iframe页面失败");
             AutoLogger.log.error(e, e.fillInStackTrace());
         }
     }
@@ -316,7 +316,7 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("退出默认iframe页面");
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("退出默认iframe页面失败");
+            AutoLogger.log.error("退出默认iframe页面失败");
             AutoLogger.log.error(e, e.fillInStackTrace());
         }
     }
@@ -331,7 +331,7 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("退出至上一个iframe页面");
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("退出至上一个iframe页面失败");
+            AutoLogger.log.error("退出至上一个iframe页面失败");
             AutoLogger.log.info(e, e.fillInStackTrace());
         }
     }
@@ -355,7 +355,7 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("窗口切换成功" + target);
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("窗口切换失败" + target);
+            AutoLogger.log.error("窗口切换失败" + target);
             AutoLogger.log.error(e, e.fillInStackTrace());
         }
     }
@@ -370,8 +370,8 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("默认同意alert弹窗");
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("处理异常，请检查");
-            AutoLogger.log.info(e, e.fillInStackTrace());
+            AutoLogger.log.error("处理异常，请检查");
+            AutoLogger.log.error(e, e.fillInStackTrace());
         }
 
     }
@@ -392,8 +392,8 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("鼠标悬停到-" + text);
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, PASS);
-            AutoLogger.log.info("处理异常，请检查");
-            AutoLogger.log.info(e, e.fillInStackTrace());
+            AutoLogger.log.error("处理异常，请检查");
+            AutoLogger.log.error(e, e.fillInStackTrace());
         }
 
     }
@@ -430,8 +430,8 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("选值完成" + value);
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("选择异常，请检查" + value);
-            AutoLogger.log.info(e, e.fillInStackTrace());
+            AutoLogger.log.error("选择异常，请检查" + value);
+            AutoLogger.log.error(e, e.fillInStackTrace());
         }
 
     }
@@ -449,8 +449,8 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("js语句执行完成-" + jsCommond);
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("js语句执行失败，请检查");
-            AutoLogger.log.info(e, e.fillInStackTrace());
+            AutoLogger.log.error("js语句执行失败，请检查");
+            AutoLogger.log.error(e, e.fillInStackTrace());
         }
     }
 
@@ -474,8 +474,8 @@ public class KeyWordOfWeb {
             FileUtils.copyFile(tmp, scrShort);
             AutoLogger.log.info("截图完成");
         } catch (IOException e) {
-            AutoLogger.log.info("截图失败，请检查");
-            AutoLogger.log.info(e, e.fillInStackTrace());
+            AutoLogger.log.error("截图失败，请检查");
+            AutoLogger.log.error(e, e.fillInStackTrace());
         }
     }
 
@@ -500,8 +500,8 @@ public class KeyWordOfWeb {
             AutoLogger.log.info("断言元素文本" + text + "包含预期" + expect + "为" + result);
         } catch (Exception e) {
             results.writeFailCell(writerLine, RES_COL, FAIL);
-            AutoLogger.log.info("断言出错，请检查");
-            AutoLogger.log.info(e, e.fillInStackTrace());
+            AutoLogger.log.error("断言出错，请检查");
+            AutoLogger.log.error(e, e.fillInStackTrace());
         }
         return result;
     }
