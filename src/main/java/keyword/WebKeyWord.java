@@ -45,11 +45,9 @@ public class WebKeyWord {
      * 设置当前操作行
      *
      * @param line 指定行
-     * @return 返回当前行号
      */
-    public int setWriterLine(int line) {
+    public void setWriterLine(int line) {
         writerLine = line;
-        return writerLine;
     }
 
     /**

@@ -1,6 +1,7 @@
 package driver;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -96,6 +97,9 @@ public class HttpClientDriver {
         } else {
             client = HttpClients.custom().setConnectionManager(connManager).build();
         }
+        //启用代理，需要抓包的时候使用，不不使用时记得注释掉
+//        HttpHost proxy = new HttpHost("localhost",8888,"http");
+//        client = HttpClients.custom().setProxy(proxy).setConnectionManager(connManager).build();
         return client;
     }
 
