@@ -1,6 +1,6 @@
 import driver.ExcelReader;
 import driver.ExcelWriter;
-import keyword.KeyWordOfWeb;
+import keyword.WebKeyWord;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +17,7 @@ public class RunCase {
         //拼接结果文件名
         ExcelWriter results = new ExcelWriter("cases/WebCases.xlsx", "product/result/result-" + time + ".xlsx");
         //实例化关键字
-        KeyWordOfWeb web = new KeyWordOfWeb(results);
+        WebKeyWord web = new WebKeyWord(results);
         int i = cases.getSheets();
 //        System.out.println("sheet页个数"+i);
         //遍历sheet页
